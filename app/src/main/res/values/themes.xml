@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AirPurifier" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@color/surface</item>
+        <!-- Set default text color -->
+        <item name="android:textColor">@color/black</item>
+        <!-- Set default font family -->
+        <item name="android:fontFamily">@font/opensansmedium</item>
+
+        <item name="android:windowActionBar">@color/black</item>
+        <!-- Set default text size -->
+        <item name="android:textSize">20sp</item>
+        <!-- Set default orientation -->
+        <item name="android:orientation">vertical</item>
+        <!-- Set default hint color -->
+        <item name="android:textColorHint">@color/gray2</item>
+        <!-- Set default hint color -->
+        <item name="android:drawableTint" tools:targetApi="m">@color/black</item>
+
+
+    </style>
+
+    <style name="Theme.AirPurifier" parent="Base.Theme.AirPurifier" />
+</resources>
