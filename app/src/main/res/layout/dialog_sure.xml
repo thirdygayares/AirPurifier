@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="20dp"
+    android:layout_gravity="center"
+    app:cardElevation="0dp"
+
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/power2"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Are you sure?"
+            android:fontFamily="@font/opensanssemibold"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="10dp"
+            />
+
+
+
+
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            >
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnYes"
+                style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:text="Yes"
+                android:textSize="25sp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/opensansbold"
+                android:textColor="@color/black"
+                app:backgroundTint="@android:color/transparent"
+                app:cornerRadius="14dp"
+                app:rippleColor="@color/gray1"
+                app:strokeColor="@color/black"
+                app:strokeWidth="0dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNo"
+                style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:paddingVertical="10dp"
+                android:text="No"
+                android:textSize="25sp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/opensansbold"
+                android:textColor="@color/black"
+                app:backgroundTint="@android:color/transparent"
+                app:cornerRadius="14dp"
+                app:rippleColor="@color/gray1"
+                app:strokeColor="@color/black"
+                app:strokeWidth="0dp"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

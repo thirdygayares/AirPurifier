@@ -20,7 +20,9 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rounder_edittext"
         android:hint="Email"
-        android:layout_marginHorizontal="40dp"
+        android:textSize="17sp"
+        android:inputType="text"
+        android:layout_marginHorizontal="25dp"
         android:paddingVertical="20dp"
         android:paddingHorizontal="20dp"
         android:drawableLeft="@drawable/baseline_email_24"
@@ -34,8 +36,9 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rounder_edittext"
         android:hint="Password"
+        android:textSize="17sp"
         android:inputType="textPassword"
-        android:layout_marginHorizontal="40dp"
+        android:layout_marginHorizontal="25dp"
         android:paddingVertical="20dp"
         android:paddingHorizontal="20dp"
         android:drawableLeft="@drawable/baseline_lock_24"
@@ -45,22 +48,22 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_addbooks"
+        android:id="@+id/btn_login"
         style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40dp"
+        android:layout_marginHorizontal="25dp"
         android:layout_marginVertical="33dp"
+        android:fontFamily="@font/opensansbold"
         android:paddingVertical="20dp"
         android:text="Login"
         android:textAllCaps="false"
-        android:fontFamily="@font/opensansbold"
         android:textColor="@color/white"
         app:backgroundTint="@color/black"
         app:cornerRadius="14dp"
         app:rippleColor="@color/gray1"
         app:strokeColor="@color/black"
-        app:strokeWidth="2dp"/>
+        app:strokeWidth="2dp" />
 
 
 </LinearLayout>
