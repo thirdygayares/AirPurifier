@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.airpurifier.airpurifier.API.ApiTasks;
@@ -33,6 +34,8 @@ public class Login extends AppCompatActivity {
     MaterialButton btn_login;
     EditText editTextEmail,editTextPassword;
 
+    ProgressBar progressBar;
+
     Boolean success = false;
 
     @Override
@@ -42,13 +45,10 @@ public class Login extends AppCompatActivity {
 
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
-
+        progressBar = findViewById(R.id.progressBar);
         btn_login = findViewById(R.id.btn_login);
 
         Data data = new Data();
-
-
-
 
             btn_login.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -59,8 +59,9 @@ public class Login extends AppCompatActivity {
                     if(username.isEmpty() || password.isEmpty()){
                        Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
                     }else{
-                        ApiTasks apiTask = new ApiTasks(username, password);
+                        ApiTasks apiTask = new ApiTasks(getApplicationContext(), username, password, progressBar);
                         apiTask.execute();
+
                     }
 
 

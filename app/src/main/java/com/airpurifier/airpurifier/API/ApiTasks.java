@@ -1,11 +1,20 @@
+/*
+ * ApiTasks class handles asynchronous API tasks, specifically a login request.
+ * It extends AsyncTask to perform network operations on a background thread.
+ * The goal is to make the code clean, reusable, and address deprecated methods.
+ */
+
 package com.airpurifier.airpurifier.API;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.airpurifier.airpurifier.Data.Data;
+import com.airpurifier.airpurifier.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,20 +27,37 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ApiTasks  extends AsyncTask<Void, Void, String> {
+// Make this code clean and reusable; address deprecated methods later
+public class ApiTasks extends AsyncTask<Void, Void, String> {
 
+    // API URL for login
     private final String apiUrl = "http://192.168.68.102/AirPurifierApi/User/api.php?apicall=login";
-    private final Map<String, String> params;
 
-    public ApiTasks(String userName, String password) {
+    // Parameters for the login request
+    private final Map<String, String> params;
+    private final Context context;
+    private final ProgressBar progressBar;
+
+    // Constructor to initialize context, login parameters, and progress bar
+    public ApiTasks(Context context, String userName, String password, ProgressBar progressBar) {
+        this.context = context;
         params = new HashMap<>();
         params.put("userName", userName);
         params.put("password", password);
+        this.progressBar = progressBar;
     }
 
+    // Pre-execution tasks, such as displaying a progress bar
+    @Override
+    protected void onPreExecute() {
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+    }
+
+    // Background task to perform the login request
     @Override
     protected String doInBackground(Void... voids) {
         try {
+            // Set up the HTTP connection
             URL url = new URL(apiUrl);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
@@ -66,11 +92,9 @@ public class ApiTasks  extends AsyncTask<Void, Void, String> {
         }
     }
 
+    // Handle the API response
     @Override
     protected void onPostExecute(String result) {
-        // Handle the API response here
-        // 'result' contains the response from the server
-
         try {
             JSONObject jsonResponse = new JSONObject(result);
 
@@ -81,18 +105,21 @@ public class ApiTasks  extends AsyncTask<Void, Void, String> {
 
                 if (isAdmin) {
                     // User is an admin, perform admin-specific actions
-                   // performAdminActions();
+                    // performAdminActions();
                 } else {
                     // User is not an admin, perform regular user actions
-                    //performUserActions();
+                    // performUserActions();
                     Data data = new Data();
                     data.isAdmin = false;
                 }
 
-
+                // Start the main activity
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
 
             } else {
-                // Login failed
+                // Login failed, show error message
                 String errorMessage = jsonResponse.getString("message");
                 showErrorToast(errorMessage);
             }
@@ -103,27 +130,23 @@ public class ApiTasks  extends AsyncTask<Void, Void, String> {
         }
     }
 
+    // Admin-specific actions
     private void performAdminActions() {
-        // Implement actions for admin users
-        // For example, redirect to admin dashboard or show admin-specific UI
         showToast("Admin logged in!");
     }
 
+    // Regular user actions
     private void performUserActions() {
-        // Implement actions for regular users
-        // For example, redirect to user dashboard or show user-specific UI
         showToast("User logged in!");
     }
 
+    // Show an error toast to the user
     private void showErrorToast(String message) {
-        // Show an error toast to the user
         Toast.makeText(context, "Error: " + message, Toast.LENGTH_SHORT).show();
     }
 
+    // Show a toast to the user
     private void showToast(String message) {
-        // Show a toast to the user
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
-
-
 }
