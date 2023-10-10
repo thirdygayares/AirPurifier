@@ -4,7 +4,7 @@ public class AccountListModel {
 
     String username;
     boolean status;
-    boolean blocked;
+    Boolean blocked;
 
     public AccountListModel(String username, boolean status, boolean blocked) {
         this.username = username;
@@ -14,6 +14,10 @@ public class AccountListModel {
 
     public String getUsername() {
         return username;
+    }
+
+    public Boolean getBlocked() {
+        return blocked;
     }
 
     public boolean isStatus() {

@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.airpurifier.airpurifier.Data.Data;
 import com.airpurifier.airpurifier.Fragment.Accountlist;
 import com.airpurifier.airpurifier.Fragment.AirStatus;
 import com.airpurifier.airpurifier.Fragment.Homepage;
@@ -71,12 +72,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void isAdmin() {
 
-        Boolean x = false;
+        Data data = new Data();
+
+        Boolean x = data.isAdmin;
+
         try{
-            if(x){
+            if(x.equals(false)){
                 navigationView.getMenu().getItem(1).setVisible(false);
                 Log.d("TAG", "status" + "admin");
                 //Toast.makeText(MainActivity.this, "check " + navigationView.getMenu().getItem(0), Toast.LENGTH_LONG).show();
+            }else{
+                navigationView.getMenu().getItem(1).setVisible(true);
             }
         }catch (Exception e){
             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();

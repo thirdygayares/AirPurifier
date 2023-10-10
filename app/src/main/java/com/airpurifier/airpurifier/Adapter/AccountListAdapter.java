@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -57,6 +58,7 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
             holder.btnBlocked.setIcon(iconDrawable);
             holder.btnBlocked.setText("Unblock");
             holder.btnBlocked.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.red)));
+
         }else{
             int iconColor = ContextCompat.getColor(holder.itemView.getContext(), R.color.black);
 
@@ -81,7 +83,7 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
         holder.btnBlocked.setOnClickListener(view -> {
             boolean isBlocked = accountListModels.get(position).isStatus();
 
-            if (isBlocked) {
+            if (accountListModels.get(position).getBlocked()) {
                 accountListModels.get(position).setBlocked(false);
                 setButtonProperties(holder.btnBlocked, R.color.black, "Block", R.color.surface);
             } else {
@@ -89,8 +91,10 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
                 setButtonProperties(holder.btnBlocked, R.color.white, "Unblock", R.color.red);
             }
 
-            notifyDataSetChanged();
+            // Notify the adapter that the item at the clicked position has changed
+            notifyItemChanged(position);
         });
+
 
 
 
