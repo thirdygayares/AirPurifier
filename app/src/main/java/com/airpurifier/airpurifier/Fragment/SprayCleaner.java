@@ -45,7 +45,7 @@ public class SprayCleaner extends Fragment {
 
     private void methodAutomatic() {
         cardAutomatic.setOnClickListener(v -> {
-            BottomSheetTh1 bottomSheetTh1 = new BottomSheetTh1(txtAutomaticStatus);
+            BottomSheetTh1 bottomSheetTh1 = new BottomSheetTh1(txtAutomaticStatus, null);
             bottomSheetTh1.show(getParentFragmentManager(), bottomSheetTh1.getTag());
         });
     }

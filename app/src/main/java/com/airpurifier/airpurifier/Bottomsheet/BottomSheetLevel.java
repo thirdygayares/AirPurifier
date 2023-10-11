@@ -5,16 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airpurifier.airpurifier.API.EndPoint;
+import com.airpurifier.airpurifier.API.POST.Post;
 import com.airpurifier.airpurifier.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BottomSheetLevel extends BottomSheetDialogFragment {
 
@@ -26,12 +31,14 @@ public class BottomSheetLevel extends BottomSheetDialogFragment {
 
 
     TextView levelText;
+    ProgressBar progressBar;
 
     public BottomSheetLevel() {
     }
 
-    public BottomSheetLevel(TextView levelText) {
+    public BottomSheetLevel(TextView levelText, ProgressBar progressBar) {
         this.levelText = levelText;
+        this.progressBar = progressBar;
     }
 
     @Nullable
@@ -50,7 +57,16 @@ public class BottomSheetLevel extends BottomSheetDialogFragment {
     }
 
     private void setLevel(String level) {
-        levelText.setText(level);
+        Map<String, String> params = new HashMap<>();
+        params.put("level", level);
+
+        Post post = new Post(getContext(), params, progressBar, EndPoint.UPDATE_AIR_PURIFIER_LEVEL);
+        post.sample();
+
+        if(post.status){
+            levelText.setText(level);
+
+        }
         dismiss();
     }
 

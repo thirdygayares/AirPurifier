@@ -6,13 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.airpurifier.airpurifier.API.EndPoint;
+import com.airpurifier.airpurifier.API.POST.Post;
 import com.airpurifier.airpurifier.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class BottomSheetTh1 extends BottomSheetDialogFragment {
 
@@ -26,11 +32,13 @@ public class BottomSheetTh1 extends BottomSheetDialogFragment {
 
     TextView levelText;
 
+    ProgressBar progressBar;
     public BottomSheetTh1() {
     }
 
-    public BottomSheetTh1(TextView levelText) {
+    public BottomSheetTh1(TextView levelText, ProgressBar progressBar){
         this.levelText = levelText;
+        this.progressBar = progressBar;
     }
 
 
@@ -64,12 +72,24 @@ public class BottomSheetTh1 extends BottomSheetDialogFragment {
 
     private void setNumber(String level) {
         txtNumberAdjusted.setText(level);
-        levelText.setText(txtNumberAdjusted.getText().toString());
+
+
+
         updateLabel();
     }
 
     private void updateLabel(){
-        levelText.setText(txtNumberAdjusted.getText().toString());
+
+        Map<String, String> params = new HashMap<>();
+        params.put("humidity", txtNumberAdjusted.getText().toString());
+
+        Post post = new Post(getContext(), params, progressBar, EndPoint.UPDATE_AIR_PURIFIER_HUMIDITY);
+        post.sample();
+
+        if(post.status){
+            levelText.setText(txtNumberAdjusted.getText().toString());
+        }
+
     }
 
     private void addNumber(int level){
