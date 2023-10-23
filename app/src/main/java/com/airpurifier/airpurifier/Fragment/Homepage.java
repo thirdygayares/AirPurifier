@@ -6,7 +6,6 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,16 +16,12 @@ import android.widget.Toast;
 
 import com.airpurifier.airpurifier.API.Api;
 import com.airpurifier.airpurifier.API.EndPoint;
-import com.airpurifier.airpurifier.API.POST.Post;
-import com.airpurifier.airpurifier.API.Params;
+import com.airpurifier.airpurifier.API.METHOD.Post;
 import com.airpurifier.airpurifier.Bottomsheet.BottomSheetLevel;
 import com.airpurifier.airpurifier.Bottomsheet.BottomSheetTh1;
-import com.airpurifier.airpurifier.Dialog.SureDialogFragment;
-import com.airpurifier.airpurifier.Model.AccountListModel;
 import com.airpurifier.airpurifier.R;
 import com.google.android.material.button.MaterialButton;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

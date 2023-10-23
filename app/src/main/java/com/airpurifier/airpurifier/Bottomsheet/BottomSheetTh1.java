@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.airpurifier.airpurifier.API.EndPoint;
-import com.airpurifier.airpurifier.API.POST.Post;
+import com.airpurifier.airpurifier.API.METHOD.Post;
 import com.airpurifier.airpurifier.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 

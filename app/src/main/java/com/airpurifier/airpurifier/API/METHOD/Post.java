@@ -1,13 +1,10 @@
-package com.airpurifier.airpurifier.API.POST;
+package com.airpurifier.airpurifier.API.METHOD;
 
 import android.content.Context;
-import android.content.Intent;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.airpurifier.airpurifier.API.Api;
-import com.airpurifier.airpurifier.API.EndPoint;
-import com.airpurifier.airpurifier.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
